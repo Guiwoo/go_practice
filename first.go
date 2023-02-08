@@ -1,7 +1,6 @@
 package main
 
 import (
-	"awesomeProject/part_2/chapter22"
 	"bytes"
 	"errors"
 	"sync"
@@ -39,5 +38,5 @@ type SyncedBuffer struct {
 }
 
 func main() {
-	chapter22.Ex01()
+
 }
