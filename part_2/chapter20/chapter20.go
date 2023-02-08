@@ -1,6 +1,8 @@
 package chapter20
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /**
 - Interface 구체화된(Concrete Object => 구현이 있는 객체 를 의미)
@@ -81,3 +83,32 @@ func SendBook(name string, sender Sender) {
 /**
 DuckTyping
 */
+
+type Stringer interface {
+	String() string
+}
+
+type Student struct {
+	Age int
+}
+
+func (s *Student) String() string {
+	return fmt.Sprintf("Student age is %v", s.Age)
+}
+
+func PrintAge(stringer Stringer) {
+	s := stringer.(*Student)
+	fmt.Println(s.String())
+}
+
+type Reader interface {
+	Reader()
+}
+
+type Close interface {
+	Close()
+}
+
+func Ex01() {
+
+}

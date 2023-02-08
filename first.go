@@ -1,35 +1,43 @@
 package main
 
-import "fmt"
+import (
+	"awesomeProject/part_2/chapter22"
+	"bytes"
+	"errors"
+	"sync"
+)
 
-func shuffle(nums []int, n int) []int {
-	rst := make([]int, len(nums))
-	for i := 0; i < len(nums)/2; i++ {
-		rst[2*i] = nums[i]
-		rst[2*i+1] = nums[i+n]
-	}
-	return rst
+func test01() (int, error) {
+	return 1, errors.New("error occurs")
 }
 
-func findAnagrams(s string, p string) []int {
-	arr := [26]int{}
-	for _,v := range p {
-		arr[v-'a']--
-	}
-	for i := 0; i < ; i++ {
-		
-	}
+type Reader interface {
+	Read([]byte) (int, error)
 }
 
-func zeroCheck(arr []int) bool {
-	for _,v := range arr {
-		if v < 0 return false
+type custom struct {
+	name string
+}
+
+func ReadFull(r Reader, buf []byte) (int, error) {
+	var (
+		n   int
+		err error
+	)
+	for len(buf) > 0 && err == nil {
+		var nr int
+		nr, err = r.Read(buf)
+		n += nr
+		buf = buf[nr:]
 	}
-	return true
+	return n, err
+}
+
+type SyncedBuffer struct {
+	lock   sync.Mutex
+	buffer bytes.Buffer
 }
 
 func main() {
-	ex := []int{2, 5, 1, 3, 4, 7}
-	rst := shuffle(ex, 3)
-	fmt.Println(rst)
+	chapter22.Ex01()
 }
