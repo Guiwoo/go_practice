@@ -26,6 +26,7 @@ type Queue[T any] struct {
 }
 
 func (q *Queue[T]) NewQueue() {
+	//*q.value = []T{}
 	q.value = &[]T{}
 }
 
@@ -45,10 +46,16 @@ func (q *Queue[T]) Pop() T {
 		panic("This Queue is Empty")
 	}
 	arr := *q.value
+
+	// arr[1:]
+	//  [0, 1, 2, 3, 4, 5, ]
+	//   address <- [1, 2,3, 4, 5]
 	*q.value = arr[1:]
+	// []a <- pointer
 
 	// arr := *q.value
 	// nArr := arr[1:]
+	fmt.Printf("", arr)
 	// q.value = &nArr
 
 	// arr = *q.value
