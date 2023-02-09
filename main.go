@@ -1,7 +1,7 @@
 package main
 
 import (
-	"awesomeProject/part_2/chapter23"
+	"awesomeProject/part_2/chapter26"
 	"bytes"
 	"errors"
 	"sync"
@@ -39,5 +39,5 @@ type SyncedBuffer struct {
 }
 
 func main() {
-	chapter23.Ex03()
+	chapter26.StartPrinter()
 }
