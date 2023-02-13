@@ -1,7 +1,7 @@
 package main
 
 import (
-	"awesomeProject/part_2/chapter29"
+	"awesomeProject/echoPractice"
 	"fmt"
 )
 
@@ -27,5 +27,5 @@ func ShareWith(name string) string {
 }
 
 func main() {
-	chapter29.Ex01()
+	echoPractice.Ex02x()
 }

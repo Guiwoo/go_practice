@@ -8,8 +8,28 @@ import (
 	"time"
 )
 
-func Ex02x() {
+type Product struct {
+	ID    string `query:"id""`
+	Name  string `query:"name"`
+	Price int    `query:"price"`
+}
 
+func (p *Product) String() string {
+	return fmt.Sprintf("ID is :%s , Name is :%s, Price is :%d", p.ID, p.Name, p.Price)
+}
+
+func Ex02x() {
+	e := echo.New()
+
+	var product Product
+	e.GET("/", func(c echo.Context) error {
+		err := c.Bind(&product)
+		if err != nil {
+			return c.String(http.StatusBadRequest, err.Error())
+		}
+		return c.String(http.StatusOK, product.String())
+	})
+	e.Logger.Fatal(e.Start(":8080"))
 }
 
 func Ex01() {
