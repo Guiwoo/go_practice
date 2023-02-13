@@ -1,7 +1,7 @@
 package main
 
 import (
-	chapter27 "awesomeProject/part_2/chapter27"
+	"awesomeProject/part_2/chapter29"
 	"fmt"
 )
 
@@ -27,8 +27,5 @@ func ShareWith(name string) string {
 }
 
 func main() {
-	a := &chapter27.Email{}
-	//b := &chapter27.FinanceReport{"abcd"}
-	var c *chapter27.Report
-	chapter27.SendReport(c, a, "park.guiwoo@hotmail.com")
+	chapter29.Ex01()
 }
