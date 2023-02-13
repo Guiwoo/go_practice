@@ -1,43 +1,34 @@
 package main
 
 import (
-	"awesomeProject/part_2/chapter26"
-	"bytes"
-	"errors"
-	"sync"
+	chapter27 "awesomeProject/part_2/chapter27"
+	"fmt"
 )
 
-func test01() (int, error) {
-	return 1, errors.New("error occurs")
-}
-
-type Reader interface {
-	Read([]byte) (int, error)
-}
-
-type custom struct {
+type Student struct {
 	name string
 }
 
-func ReadFull(r Reader, buf []byte) (int, error) {
-	var (
-		n   int
-		err error
-	)
-	for len(buf) > 0 && err == nil {
-		var nr int
-		nr, err = r.Read(buf)
-		n += nr
-		buf = buf[nr:]
-	}
-	return n, err
+func (s *Student) String() string {
+	return fmt.Sprintf("One for %s,one for me", s.name)
 }
 
-type SyncedBuffer struct {
-	lock   sync.Mutex
-	buffer bytes.Buffer
+// ShareWith should have a comment documenting it.
+func ShareWith(name string) string {
+	// Write some code here to pass the test suite.
+	// Then remove all the stock comments.
+	// They're here to help you get started but they only clutter a finished solution.
+	// If you leave them in, reviewers may protest!
+	s := &Student{"you"}
+	if len(name) > 0 {
+		s.name = name
+	}
+	return s.String()
 }
 
 func main() {
-	chapter26.StartPrinter()
+	a := &chapter27.Email{}
+	//b := &chapter27.FinanceReport{"abcd"}
+	var c *chapter27.Report
+	chapter27.SendReport(c, a, "park.guiwoo@hotmail.com")
 }
