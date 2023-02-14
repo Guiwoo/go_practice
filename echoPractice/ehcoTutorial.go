@@ -18,6 +18,51 @@ func (p *Product) String() string {
 	return fmt.Sprintf("ID is :%s , Name is :%s, Price is :%d", p.ID, p.Name, p.Price)
 }
 
+type User struct {
+	Name  string `json:"name" form:"name" query:"name"`
+	Email string `json:"email" form:"email" query:"email"`
+}
+
+type UserDTO struct {
+	Name    string
+	Email   string
+	IsAdmin bool
+}
+
+/**
+Path parameters
+Query parameters (only for GET/DELETE methods)
+Request body
+
+이 순서로 바인딩 되서 가장 마지막 꺼가 바인딩됨 만약 path 로 보내는데 body 가 비었다 ? 그건 empty parameter 임
+*/
+
+func Ex03() {
+	logic := func(u UserDTO) {
+		fmt.Println("User logic by UserDTO", u)
+	}
+
+	e := echo.New()
+
+	e.POST("/", func(c echo.Context) error {
+		u := new(User)
+		err := c.Bind(u)
+		if err != nil {
+			return c.String(http.StatusBadRequest, err.Error())
+		}
+
+		user := UserDTO{
+			Name:    u.Name,
+			Email:   u.Email,
+			IsAdmin: false,
+		}
+		logic(user)
+		return c.JSON(http.StatusOK, u)
+	})
+
+	e.Logger.Fatal(e.Start(":8080"))
+}
+
 func Ex02x() {
 	e := echo.New()
 

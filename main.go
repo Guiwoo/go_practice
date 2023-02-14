@@ -27,5 +27,5 @@ func ShareWith(name string) string {
 }
 
 func main() {
-	echoPractice.Ex02x()
+	echoPractice.Ex11()
 }
