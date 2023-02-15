@@ -1,7 +1,7 @@
 package main
 
 import (
-	"awesomeProject/echoPractice"
+	"awesomeProject/goorm"
 	"fmt"
 )
 
@@ -27,5 +27,5 @@ func ShareWith(name string) string {
 }
 
 func main() {
-	echoPractice.Ex11()
+	goorm.Start()
 }
