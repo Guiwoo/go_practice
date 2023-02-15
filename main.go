@@ -27,5 +27,5 @@ func ShareWith(name string) string {
 }
 
 func main() {
-	goorm.Start2()
+	goorm.Start3()
 }
