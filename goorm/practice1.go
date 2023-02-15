@@ -47,7 +47,7 @@ func init() {
 	if err != nil {
 		panic("Failed to connect database " + err.Error())
 	}
-	db.AutoMigrate(&Product{}, &User{})
+	//db.AutoMigrate(&Product{}, &User{})
 	fmt.Println("✅ Connected with mysql")
 }
 
