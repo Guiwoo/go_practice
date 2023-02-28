@@ -1,7 +1,6 @@
 package main
 
 import (
-	"awesomeProject/goorm"
 	"fmt"
 )
 
@@ -26,6 +25,26 @@ func ShareWith(name string) string {
 	return s.String()
 }
 
+type Testing interface {
+	nothing()
+}
+type Abc struct {
+	a Testing
+}
+
+func (a *Abc) nothing() {}
+
+type B struct{}
+
+func (b *B) nothing() {}
+
+func hello(a Testing) *B {
+	res := a.(*B)
+	return res
+}
+
 func main() {
-	goorm.Start3()
+	//var testing = &Abc{&B{}}
+	var testing Testing
+	hello(testing)
 }
