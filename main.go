@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 type Student struct {
@@ -44,7 +45,5 @@ func hello(a Testing) *B {
 }
 
 func main() {
-	//var testing = &Abc{&B{}}
-	var testing Testing
-	hello(testing)
+	os.WriteFile("filename", []byte("Something happens on the internet"), 0644)
 }
