@@ -1,8 +1,8 @@
 package main
 
 import (
+	designPatern "awesomeProject/designPattern"
 	"fmt"
-	"os"
 )
 
 type Student struct {
@@ -45,5 +45,5 @@ func hello(a Testing) *B {
 }
 
 func main() {
-	os.WriteFile("filename", []byte("Something happens on the internet"), 0644)
+	designPatern.StartTest()
 }

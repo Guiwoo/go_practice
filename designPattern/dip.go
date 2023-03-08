@@ -1,4 +1,4 @@
-package main
+package designPatern
 
 import "fmt"
 
@@ -62,8 +62,4 @@ func (r *Research) Investigate() {
 	for _, p := range r.browser.FindAllChildrenOf("John") {
 		fmt.Println("John has a child called", p.name)
 	}
-}
-
-func main() {
-
 }

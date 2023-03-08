@@ -1,4 +1,4 @@
-package main
+package designPatern
 
 type Document struct {
 }
@@ -98,7 +98,3 @@ func (m MultiFunctionMachine) Scan(d Document) {
 var _ Scanner = (*Photocopier)(nil)
 var _ Printer = (*Photocopier)(nil)
 var _ Printer = (*MyPrinter)(nil)
-
-func main() {
-
-}
