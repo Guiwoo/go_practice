@@ -12,22 +12,22 @@ const (
 	Sibling
 )
 
-type Person struct {
+type Personer struct {
 	name string
 }
 
 type Info struct {
-	from         *Person
+	from         *Personer
 	relationship Relationship
-	to           *Person
+	to           *Personer
 }
 
 type Relationships struct {
 	relations []Info
 }
 
-func (r *Relationships) FindAllChildrenOf(name string) []*Person {
-	result := make([]*Person, 0)
+func (r *Relationships) FindAllChildrenOf(name string) []*Personer {
+	result := make([]*Personer, 0)
 
 	for i, v := range r.relations {
 		if v.relationship == Parent &&
@@ -39,7 +39,7 @@ func (r *Relationships) FindAllChildrenOf(name string) []*Person {
 	return result
 }
 
-func (r *Relationships) AddParentAndChild(parent, child *Person) {
+func (r *Relationships) AddParentAndChild(parent, child *Personer) {
 	r.relations = append(r.relations, Info{parent, Parent, child})
 	r.relations = append(r.relations, Info{child, Child, parent})
 }
@@ -53,7 +53,7 @@ type Research struct {
 }
 
 type RelationshipBrowser interface {
-	FindAllChildrenOf(name string) []*Person
+	FindAllChildrenOf(name string) []*Personer
 }
 
 var _ RelationshipBrowser = (*Relationships)(nil)
