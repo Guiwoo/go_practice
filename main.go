@@ -1,7 +1,7 @@
 package main
 
 import (
-	designPatern "awesomeProject/designPattern"
+	designPatern "awesomeProject/designPattern/Builder"
 	"fmt"
 )
 

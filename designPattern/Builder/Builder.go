@@ -1,4 +1,4 @@
-package designPatern
+package Builder
 
 import (
 	"fmt"
@@ -184,4 +184,40 @@ func SendEmail(action build) {
 	builder := EmailBuilder{}
 	action(&builder)
 	sendMailImpl(&builder.email)
+}
+
+type Student struct {
+	name, position string
+}
+type StdMod func(*Student)
+type StdBuilder struct {
+	actions []StdMod
+}
+
+func (b *StdBuilder) Called(name string) *StdBuilder {
+	b.actions = append(b.actions, func(student *Student) {
+		student.name = name
+	})
+	return b
+}
+
+func (b *StdBuilder) SetPos(pos string) *StdBuilder {
+	b.actions = append(b.actions, func(student *Student) {
+		student.position = pos
+	})
+	return b
+}
+
+func (b *StdBuilder) Build() *Student {
+	p := Student{}
+	for _, a := range b.actions {
+		a(&p)
+	}
+	return &p
+}
+
+func Start2() {
+	b := StdBuilder{}
+	p := b.Called("Guiwoo").SetPos("Lv3").Build()
+	fmt.Println(p)
 }
